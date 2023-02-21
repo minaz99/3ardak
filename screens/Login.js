@@ -28,10 +28,15 @@ const Login = () => {
           className="bg-white rounded-md p-2 "
           secureTextEntry={true}
         ></TextInput>
+
+        <TouchableOpacity className="flex-row">
+          <Text className="flex-1"></Text>
+          <Text className="underline float-left">Forgot password</Text>
+        </TouchableOpacity>
         <View className="items-center flex-row">
           <TouchableOpacity
             onPress={navigation.goBack}
-            className=" sticky top-[50vh]  mx-auto   p-4"
+            className=" mx-auto   p-4"
           >
             <Text
               className="text-lg text-black"
@@ -40,7 +45,10 @@ const Login = () => {
               Back
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity className="sticky top-[50vh] w-32 mx-auto rounded-full bg-white  p-4">
+          <TouchableOpacity
+            onPress={() => navigation.navigate("HomePage")}
+            className="w-32 mx-auto rounded-full bg-white  p-4"
+          >
             <Text
               className="text-lg text-black text-center"
               style={{ fontFamily: "Ultra2" }}

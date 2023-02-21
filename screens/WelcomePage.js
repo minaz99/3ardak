@@ -137,6 +137,20 @@ const WelcomePage = () => {
               </Text>
             </TouchableOpacity>
           </View>
+          <TouchableOpacity className="flex-row mt-4 mx-auto p-2 space-x-2 bg-sky-500/40 rounded-lg items-center ">
+            <View className="bg-white rounded-lg p-0.5">
+              <Image
+                source={require("../src/google-symbol.png")}
+                className=" h-8 w-8"
+              />
+            </View>
+            <Text
+              style={{ fontFamily: "Ultra" }}
+              className="text-xl  text-center text-black"
+            >
+              Login with google
+            </Text>
+          </TouchableOpacity>
         </Motion.View>
       </SafeAreaView>
     );
