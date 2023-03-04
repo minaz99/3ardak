@@ -1,10 +1,10 @@
 import React from "react";
-import { View } from "react-native";
+import { ScrollView, View } from "react-native";
 import MyRequest from "../Requests Wrappers/MyRequest";
 
-const MyRequests = () => {
+const Myrequests = () => {
   return (
-    <View>
+    <ScrollView className="flex-grow">
       <MyRequest
         category="Home appliances"
         status="Finished"
@@ -20,8 +20,8 @@ const MyRequests = () => {
         status="Expired"
         request="Need someone to fix my fridge, fridge model is F45GHK Casio"
       />
-    </View>
+    </ScrollView>
   );
 };
 
-export default MyRequests;
+export default Myrequests;

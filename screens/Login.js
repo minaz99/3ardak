@@ -46,7 +46,7 @@ const Login = () => {
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => navigation.navigate("HomePage")}
+            onPress={() => navigation.navigate("Categories")}
             className="w-32 mx-auto rounded-full bg-white  p-4"
           >
             <Text
