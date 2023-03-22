@@ -3,13 +3,22 @@ import React, { useLayoutEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useFonts } from "expo-font";
-import {
+/*import {
   MultipleSelectList,
   SelectList,
-} from "react-native-dropdown-select-list";
-
+} from "react-native-dropdown-select-list"; */
+import { useDispatch } from "react-redux";
+import { registerUser } from "../API calls/RegisterUserSlice";
+//import { registerUser } from "../API calls/RegisterUserSlice";
 const Register = () => {
-  const [selected, setSelected] = useState("");
+  const dispatch = useDispatch();
+  const [fname, setFname] = useState("");
+  const [lname, setLname] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [address, setAddress] = useState("");
+  //const [selected, setSelected] = useState("");
   const [fontsLoaded] = useFonts({
     Ultra: require("../assets/fonts/AbrilFatface-Regular.ttf"),
     Ultra2: require("../assets/fonts/LilitaOne-Regular.ttf"),
@@ -19,10 +28,10 @@ const Register = () => {
     navigation.setOptions({ headerShown: false });
   }, []);
 
-  const data = [
+  /*const data = [
     { key: "1", value: "Male" },
     { key: "2", value: "Female" },
-  ];
+  ];*/
 
   return (
     <SafeAreaView className="h-full bg-blue-200 p-2">
@@ -31,17 +40,31 @@ const Register = () => {
           Create new account
         </Text>
         <TextInput
-          placeholder="Email"
-          className=" rounded-md bg-white p-2"
-        ></TextInput>
-        <TextInput
+          value={fname}
+          onChangeText={setFname}
           placeholder="First Name"
           className="bg-white rounded-md p-2"
         ></TextInput>
         <TextInput
+          value={lname}
+          onChangeText={setLname}
           placeholder="Last Name"
-          className="bg-white rounded-md my-6 p-2"
+          className="bg-white rounded-md  p-2"
         ></TextInput>
+        <TextInput
+          value={email}
+          onChangeText={setEmail}
+          placeholder="Email"
+          className=" rounded-md bg-white p-2"
+        ></TextInput>
+        <TextInput
+          value={password}
+          onChangeText={setPassword}
+          secureTextEntry={true}
+          placeholder="Password"
+          className=" rounded-md bg-white p-2"
+        ></TextInput>
+        {/*
         <SelectList
           setSelected={(val) => setSelected(val)}
           data={data}
@@ -49,19 +72,22 @@ const Register = () => {
           label="Select gender"
           search={false}
           boxStyles={{ backgroundColor: "white", borderColor: "white" }} //override default styles
-        />
-        <View className="flex-row items-center  space-x-2">
+  />*/}
+        <View className="flex-row items-center space-x-2">
           <Text className="bg-white rounded-md p-3  text-md">+965</Text>
           <TextInput
+            value={phoneNumber}
+            onChangeText={setPhoneNumber}
             keyboardType="numeric"
             placeholder="Phone Number"
             className="bg-white rounded-md p-2"
           ></TextInput>
         </View>
         <TextInput
-          placeholder="Password"
+          value={address}
+          onChangeText={setAddress}
+          placeholder="Address"
           className="bg-white rounded-md p-2"
-          secureTextEntry={true}
         ></TextInput>
         <View className="items-center flex-row">
           <TouchableOpacity
@@ -75,7 +101,21 @@ const Register = () => {
               Back
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity className="sticky top-[15vh] w-32 mx-auto rounded-full bg-white  p-4">
+          <TouchableOpacity
+            onPress={() =>
+              dispatch(
+                registerUser(
+                  fname,
+                  lname,
+                  email,
+                  password,
+                  phoneNumber,
+                  address
+                )
+              )
+            }
+            className="sticky top-[15vh] w-32 mx-auto rounded-full bg-white  p-4"
+          >
             <Text
               className="text-lg text-black text-center"
               style={{ fontFamily: "Ultra2" }}

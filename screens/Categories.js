@@ -4,7 +4,6 @@ import Category from "../components/Categories sections/Category";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Footer from "../components/Footer";
-import NewCategoryDesign from "../components/Categories sections/NewCategoryDesign";
 const Categories = () => {
   const navigation = useNavigation();
   useLayoutEffect(() => {
