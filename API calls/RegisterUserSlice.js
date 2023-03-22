@@ -1,17 +1,16 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  User: null,
   isError: false,
   isSuccess: true,
   isFetching: false,
 };
 
 export const registerUser = createAsyncThunk(
-  "users/register",
+  "/register",
   async ({ fname, lname, email, password, phoneNumber, address }, thunkAPI) => {
     try {
-      const response = await fetch("http://localhost:8080/users", {
+      const response = await fetch(`http://localhost:8080/users`, {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -36,7 +35,11 @@ export const registerUser = createAsyncThunk(
 const RegisterUserSlice = createSlice({
   name: "register",
   initialState,
-  reducers: {},
+  reducers: {
+    logSomething: (state) => {
+      console.log("reached here");
+    },
+  },
   extraReducers: {
     [registerUser.pending]: (state, { payload }) => {
       state.isFetching = true;
@@ -53,4 +56,5 @@ const RegisterUserSlice = createSlice({
   },
 });
 
+export const { logSomething } = RegisterUserSlice.actions;
 export default RegisterUserSlice.reducer;

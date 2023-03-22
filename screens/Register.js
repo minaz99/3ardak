@@ -104,14 +104,14 @@ const Register = () => {
           <TouchableOpacity
             onPress={() =>
               dispatch(
-                registerUser(
+                registerUser({
                   fname,
                   lname,
                   email,
                   password,
                   phoneNumber,
-                  address
-                )
+                  address,
+                })
               )
             }
             className="sticky top-[15vh] w-32 mx-auto rounded-full bg-white  p-4"
