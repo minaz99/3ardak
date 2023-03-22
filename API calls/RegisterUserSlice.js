@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import User from "../User";
+
 const initialState = {
   User: null,
   isError: false,
