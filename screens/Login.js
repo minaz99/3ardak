@@ -3,27 +3,42 @@ import React, { useLayoutEffect } from "react";
 import { useFonts } from "expo-font";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { loginUser } from "../API calls/LoginUserSlice";
+import { useEffect } from "react";
 
 const Login = () => {
   const [fontsLoaded] = useFonts({
     Ultra: require("../assets/fonts/AbrilFatface-Regular.ttf"),
     Ultra2: require("../assets/fonts/LilitaOne-Regular.ttf"),
   });
+  const dispatch = useDispatch();
+  const { isSuccess } = useSelector((session) => session.login);
   const navigation = useNavigation();
   useLayoutEffect(() => {
     navigation.setOptions({ headerShown: false });
   }, []);
-  return (
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  return isSuccess === false ? (
     <SafeAreaView className="h-full p-2 bg-blue-200">
       <View className="border-white h-full  border-4 space-y-6   rounded-3xl p-4">
         <Text className="mx-auto text-2xl" style={{ fontFamily: "Ultra2" }}>
           Login to your account
         </Text>
         <TextInput
+          keyboardType="email-address"
           placeholder="Email"
           className="bg-white rounded-md p-2"
+          value={email}
+          onChangeText={setEmail}
         ></TextInput>
         <TextInput
+          value={password}
+          onChangeText={setPassword}
           placeholder="Password"
           className="bg-white rounded-md p-2 "
           secureTextEntry={true}
@@ -46,7 +61,7 @@ const Login = () => {
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => navigation.navigate("Categories")}
+            onPress={() => dispatch(loginUser({ email, password }))}
             className="w-32 mx-auto rounded-full bg-white  p-4"
           >
             <Text
@@ -59,6 +74,8 @@ const Login = () => {
         </View>
       </View>
     </SafeAreaView>
+  ) : (
+    <View>{navigation.navigate("Categories")}</View>
   );
 };
 
