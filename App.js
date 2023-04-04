@@ -10,6 +10,7 @@ import MyRequests from "./screens/MyRequests";
 import Offers from "./screens/Offers";
 import Register from "./screens/Register";
 import WelcomePage from "./screens/WelcomePage";
+import Requests from "./screens/Requests";
 import store from "./store";
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -24,6 +25,7 @@ export default function App() {
           <Stack.Screen name="Offers" component={Offers} />
           <Stack.Screen name="Categories" component={Categories} />
           <Stack.Screen name="MyRequests" component={MyRequests} />
+          <Stack.Screen name="Requests" component={Requests} />
         </Stack.Navigator>
       </Provider>
     </NavigationContainer>
