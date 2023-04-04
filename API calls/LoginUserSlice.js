@@ -44,7 +44,7 @@ const loginUserSlice = createSlice({
       state.isSuccess = true;
       state.token = payload.token;
       state.id = payload.userID;
-      alert("Token: " + state.token + " userID: " + state.id);
+      //alert("Token: " + state.token + " userID: " + state.id);
     },
     [loginUser.rejected]: (state, { payload }) => {
       state.isFetching = false;

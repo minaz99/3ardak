@@ -9,7 +9,7 @@ const initialState = {
 
 export const getCategoriesRequests = createAsyncThunk(
   "/requests/categories",
-  async ({ email, password }, thunkAPI) => {
+  async (token, thunkAPI) => {
     try {
       const response = await fetch(
         `http://localhost:8080/requests/categories`,
@@ -18,11 +18,8 @@ export const getCategoriesRequests = createAsyncThunk(
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
           },
-          body: JSON.stringify({
-            email,
-            password,
-          }),
         }
       );
       let data = await response.json();
@@ -44,6 +41,7 @@ const getCategoriesRequestsSlice = createSlice({
     [getCategoriesRequests.fulfilled]: (state, { payload }) => {
       state.isFetching = false;
       state.isSuccess = true;
+      for (let i = 0; i < 7; i++) state.categoriesRequests[i] = payload[i];
       console.log("Fetching successfull");
     },
     [getCategoriesRequests.rejected]: (state, { payload }) => {
