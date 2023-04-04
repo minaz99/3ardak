@@ -5,64 +5,46 @@ import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Footer from "../components/Footer";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getCategoriesRequests } from "../API calls/Requests/CategoriesRequestsSlice";
 const Categories = () => {
   const navigation = useNavigation();
-  const [home, setHome] = useState([]);
-  const [houseDesign, setHouseDesign] = useState([]);
-  const [electronics, setElectronics] = useState([]);
-  const [winchServices, setWinchServices] = useState([]);
-  const [construction, setConstruction] = useState([]);
-  const [gameAndEntertainment, setGameAndEntertainment] = useState([]);
-  const [other, setOther] = useState([]);
+
+  const dispatch = useDispatch();
+  const { token } = useSelector((store) => store.login);
+  const { isSuccess, categoriesRequests } = useSelector(
+    (store) => store.categoryRequests
+  );
+  const [catsReqs, setCatReqs] = useState([]);
   useLayoutEffect(() => {
     navigation.setOptions({ headerShown: false });
   }, []);
-  return (
+
+  useEffect(() => {
+    //alert(categoryRequests.length);
+    dispatch(getCategoriesRequests(token));
+  }, [categoriesRequests]);
+
+  return isSuccess === true ? (
     <SafeAreaView className="h-full bg-white">
       <ScrollView horizontal={false} className="flex-grow">
-        <Category
-          categoryName="Home"
-          requestsCount="17"
-          categoryDescription="Fixing and maintaining services for home electronics"
-        />
-        <Category
-          categoryName="House design"
-          requestsCount="12"
-          categoryDescription="Services for in house fixing"
-        />
-        <Category
-          categoryName="Electronics"
-          requestsCount="12"
-          categoryDescription="Services for in house fixing"
-        />
-
-        <Category
-          categoryName="Winch services"
-          requestsCount="0"
-          categoryDescription="Winch services for carrying cars that need maintainance"
-        />
-
-        <Category
-          categoryName="Construction"
-          requestsCount="3"
-          categoryDescription="Services required during buildings construction and labor work"
-        />
-        <Category
-          categoryName="Game and Entertainment"
-          requestsCount="1"
-          categoryDescription="Fixing, set up and installing games for consoles"
-        />
-
-        <Category
-          categoryName="Other"
-          requestsCount="23"
-          categoryDescription="Other categories"
-        />
+        {categoriesRequests.map((cat) => {
+          return (
+            <Category
+              categoryName={cat.category}
+              requestsCount={cat.requestsCount}
+              categoryDescription="Need to write this out yet!"
+            />
+          );
+        })}
       </ScrollView>
       <View className="p-2">
         <Footer />
       </View>
     </SafeAreaView>
+  ) : (
+    <Text>No categories to load</Text>
   );
 };
 
