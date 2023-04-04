@@ -1,4 +1,4 @@
-import { View, Text, ScrollView } from "react-native";
+import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import React, { useLayoutEffect } from "react";
 import Category from "../components/Categories sections/Category";
 import { useNavigation } from "@react-navigation/native";
@@ -10,7 +10,7 @@ import { useEffect } from "react";
 import { getCategoriesRequests } from "../API calls/Requests/CategoriesRequestsSlice";
 const Categories = () => {
   const navigation = useNavigation();
-
+  const [clickedCategory, setClickedCategory] = useState(false);
   const dispatch = useDispatch();
   const { token } = useSelector((store) => store.login);
   const { isSuccess, categoriesRequests } = useSelector(
@@ -24,7 +24,7 @@ const Categories = () => {
   useEffect(() => {
     //alert(categoryRequests.length);
     dispatch(getCategoriesRequests(token));
-  }, [categoriesRequests]);
+  }, [clickedCategory]);
 
   return isSuccess === true ? (
     <SafeAreaView className="h-full bg-white">
@@ -32,8 +32,11 @@ const Categories = () => {
         {categoriesRequests.map((cat) => {
           return (
             <Category
+              setClickedCategory={setClickedCategory}
+              clickedCategory={clickedCategory}
               categoryName={cat.category}
               requestsCount={cat.requestsCount}
+              categoriesRequests={cat.requests}
               categoryDescription="Need to write this out yet!"
             />
           );
