@@ -12,14 +12,17 @@ const Category = (props) => {
     { categoryName: "Fridge", requestsCount: "9" },
     { categoryName: "Oven", requestsCount: "1" },
   ];
+
+  const clickedCategory = () => {
+    props.setClickedCategory(!props.clickedCategory);
+    navigation.navigate("Requests", props.categoriesRequests);
+  };
+
   return (
     <View className="p-4 border-b bg-white border-gray-300 flex-col">
       <View className="flex-row items-center  ">
         <View className="flex-1 flex-row space-x-1 items-center  ">
-          <TouchableOpacity
-            onPress={() => navigation.navigate("HomePage")}
-            className=""
-          >
+          <TouchableOpacity onPress={clickedCategory} className="">
             <Text className="text-blue-400">{props.categoryName}</Text>
           </TouchableOpacity>
           <TouchableOpacity
