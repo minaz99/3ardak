@@ -34,7 +34,7 @@ const Register = () => {
   ];*/
 
   return (
-    <SafeAreaView className="h-full bg-blue-200 p-2">
+    <SafeAreaView className="h-full bg-sky-600 p-2">
       <View className="  border-white border-4 h-full rounded-3xl p-4 space-y-6 flex-col">
         <Text className="mx-auto text-2xl" style={{ fontFamily: "Ultra2" }}>
           Create new account

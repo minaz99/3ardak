@@ -37,7 +37,7 @@ const Categories = () => {
               categoryName={cat.category}
               requestsCount={cat.requestsCount}
               categoriesRequests={cat.requests}
-              categoryDescription="Need to write this out yet!"
+              categoryDescription={cat.description}
             />
           );
         })}

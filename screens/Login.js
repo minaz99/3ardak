@@ -24,7 +24,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   return isSuccess === false ? (
-    <SafeAreaView className="h-full p-2 bg-blue-200">
+    <SafeAreaView className="h-full p-2 bg-sky-600">
       <View className="border-white h-full  border-4 space-y-6   rounded-3xl p-4">
         <Text className="mx-auto text-2xl" style={{ fontFamily: "Ultra2" }}>
           Login to your account
@@ -46,7 +46,9 @@ const Login = () => {
 
         <TouchableOpacity className="flex-row">
           <Text className="flex-1"></Text>
-          <Text className="underline float-left">Forgot password</Text>
+          <Text className="underline float-left text-white">
+            Forgot password
+          </Text>
         </TouchableOpacity>
         <View className="items-center flex-row">
           <TouchableOpacity

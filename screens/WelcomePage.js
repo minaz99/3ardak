@@ -57,7 +57,7 @@ const WelcomePage = () => {
 
   if (fontsLoaded)
     return (
-      <SafeAreaView className="h-full bg-blue-200">
+      <SafeAreaView className="h-full bg-sky-600">
         <Motion.View
           initial={{ x: -100, y: -100, opacity: 0.5, scale: 0.7 }}
           animate={{ x: 0, y: 0, opacity: 1, scale: 1 }}
@@ -113,7 +113,7 @@ const WelcomePage = () => {
               </View>
             </View>
             <View className="mt-8">
-              <Text className="text-sm  text-center mx-auto p-2 text-slate-600 font-bold ">
+              <Text className="text-sm  text-center mx-auto p-2 text-black font-bold ">
                 Your place to all services and any servies, make a request and
                 choose the best offer that suits you!
               </Text>
@@ -137,7 +137,7 @@ const WelcomePage = () => {
               </Text>
             </TouchableOpacity>
           </View>
-          <TouchableOpacity className="flex-row mt-4 mx-auto p-2 space-x-2 bg-sky-500/40 rounded-lg items-center ">
+          <TouchableOpacity className="flex-row mt-4 mx-auto p-2 space-x-2 bg-white rounded-lg items-center ">
             <View className="bg-white rounded-lg p-0.5">
               <Image
                 source={require("../src/google-symbol.png")}
