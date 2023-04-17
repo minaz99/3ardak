@@ -1,25 +1,27 @@
 import React from "react";
-import { ScrollView, View } from "react-native";
+import { ScrollView, Text, View } from "react-native";
 import MyRequest from "../Requests Wrappers/MyRequest";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getMyRequests } from "../../API calls/Requests/MyRequestsSlice";
 
-const Myrequests = () => {
+const Myrequests = (props) => {
   return (
-    <ScrollView className="flex-grow">
-      <MyRequest
-        category="Home appliances"
-        status="Finished"
-        request="Need someone to fix my fridge, fridge model is F45GHK Casio"
-      />
-      <MyRequest
-        category="Home appliances"
-        status="Pending"
-        request="Need someone to fix my fridge, fridge model is F45GHK Casio"
-      />
-      <MyRequest
-        category="Home appliances"
-        status="Expired"
-        request="Need someone to fix my fridge, fridge model is F45GHK Casio"
-      />
+    <ScrollView
+      horizontal={false}
+      className="flex-grow p-2   divide-y-2 divide-red-300 "
+      overScrollMode="never"
+    >
+      {props.requests.map((req) => {
+        return (
+          <MyRequest
+            id={req.id}
+            category={req.category}
+            status={req.status}
+            request={req.title}
+          />
+        );
+      })}
     </ScrollView>
   );
 };
