@@ -16,9 +16,9 @@ const Footer = () => {
         onPress={() => navigation.navigate("Categories")}
         className="mx-auto items-center flex-col"
       >
-        <InboxStackIcon className="h-16 w-16" fill={"#bfdbfe"} />
+        <InboxStackIcon className="h-16 w-16" fill={"#0284c7"} />
         <Text
-          className="text-sm  text-blue-200 "
+          className="text-sm  text-sky-600 "
           style={{ fontFamily: "Ultra" }}
         >
           Categories
