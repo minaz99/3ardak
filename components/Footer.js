@@ -10,6 +10,7 @@ import { useNavigation } from "@react-navigation/native";
 
 const Footer = () => {
   const navigation = useNavigation();
+
   return (
     <View className=" bg-white rounded-full   p-2 space-x-4 flex-row">
       <TouchableOpacity
