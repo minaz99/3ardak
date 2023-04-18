@@ -9,9 +9,19 @@ import React from "react";
 import { useState } from "react";
 import Request from "../Requests Wrappers/Request";
 import { XCircleIcon } from "react-native-heroicons/solid";
+import { useDispatch, useSelector } from "react-redux";
+import { makeOffer } from "../../API calls/Offers/MakeOfferSlice";
+import { useEffect } from "react";
 
 const MakeOffer = (props) => {
+  const dispatch = useDispatch();
+  const { token, id } = useSelector((store) => store.login);
+  const { isSuccess } = useSelector((store) => store.makeOffer);
   const [description, setDescription] = useState("");
+  const [offerPrice, setOfferPrice] = useState(0);
+  useEffect(() => {
+    if (isSuccess) setOfferPrice(false);
+  }, [isSuccess]);
   return (
     <View className="bg-sky-200 flex-col rounded-xl p-2 h-full  ">
       <View className="items-center pb-2 flex-row">
@@ -48,11 +58,25 @@ const MakeOffer = (props) => {
         </View>
         <View className="bg-sky-600/60 rounded-xl p-2 flex-grow">
           <TextInput
+            value={offerPrice}
+            onChangeText={setOfferPrice}
             keyboardType="numeric"
             placeholder={"Price in KD"}
           ></TextInput>
         </View>
-        <TouchableOpacity className="p-4  bg-white rounded-lg text-sm ">
+        <TouchableOpacity
+          onPress={() =>
+            dispatch(
+              makeOffer({
+                token,
+                id,
+                reqID: props.reqObject.id,
+                description: description + ", " + offerPrice + " KD",
+              })
+            )
+          }
+          className="p-4  bg-white rounded-lg text-sm "
+        >
           <Text className="font-bold w-full text-center text-black">
             Send offer
           </Text>
