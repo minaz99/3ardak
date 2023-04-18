@@ -80,7 +80,7 @@ function Requests() {
           )}
         </View>
         <View className="z-0  p-2">
-          <Footer />
+          <Footer isActive="categories" requests={true} />
         </View>
       </View>
     </SafeAreaView>
