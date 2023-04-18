@@ -43,7 +43,7 @@ const Categories = () => {
         })}
       </ScrollView>
       <View className="p-2">
-        <Footer />
+        <Footer isActive="categories" />
       </View>
     </SafeAreaView>
   ) : (

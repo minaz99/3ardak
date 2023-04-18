@@ -27,7 +27,7 @@ const MyRequests = () => {
     <SafeAreaView className="h-full bg-white">
       <Myrequests requests={requests} requestsCount={requestsCount} />
       <View className="p-2">
-        <Footer />
+        <Footer isActive="myRequests" />
       </View>
     </SafeAreaView>
   );
