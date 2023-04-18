@@ -20,7 +20,7 @@ const Footer = (props) => {
   const myRequestsColor =
     props.isActive === "myRequests" ? "#0284c7" : "#94a3b8";
   const categoriesOnPress = () => {
-    if (props.isActive !== "categories") {
+    if (props.isActive !== "categories" || props.requests === true) {
       navigation.navigate("Categories");
     }
   };
