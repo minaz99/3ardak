@@ -12,7 +12,6 @@ import { useEffect } from "react";
 
 const Footer = (props) => {
   const navigation = useNavigation();
-
   const categoriesColor =
     props.isActive === "categories" ? "#0284c7" : "#94a3b8";
   const offersColor = props.isActive === "offers" ? "#0284c7" : "#94a3b8";
