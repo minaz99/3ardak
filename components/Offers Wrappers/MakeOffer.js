@@ -4,6 +4,7 @@ import {
   TextInput,
   ScrollView,
   TouchableOpacity,
+  ImageBackground,
 } from "react-native";
 import React from "react";
 import { useState } from "react";
@@ -23,7 +24,7 @@ const MakeOffer = (props) => {
     if (isSuccess) setOfferPrice(false);
   }, [isSuccess]);
   return (
-    <View className="bg-sky-200 flex-col rounded-xl p-2 h-full  ">
+    <View className="bg-sky-100 flex-col rounded-xl  p-2 h-full  ">
       <View className="items-center pb-2 flex-row">
         <View className="flex-1 "></View>
         <TouchableOpacity
