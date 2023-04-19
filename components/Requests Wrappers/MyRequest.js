@@ -7,6 +7,8 @@ import {
   TagIcon,
   InboxStackIcon,
   InformationCircleIcon,
+  ArrowRightIcon,
+  ChevronRightIcon,
 } from "react-native-heroicons/solid";
 
 const MyRequest = (props) => {
@@ -23,7 +25,7 @@ const MyRequest = (props) => {
       ? "#9ca3af"
       : "#dc2626";
   return (
-    <TouchableOpacity className="my-2 rounded-3xl " id={props.id}>
+    <View className="my-2 rounded-3xl " key={props.id}>
       <ImageBackground
         source={require("../../src/4.jpg")}
         resizeMode="cover"
@@ -46,8 +48,21 @@ const MyRequest = (props) => {
             {props.status}
           </Text>
         </View>
+
+        <TouchableOpacity
+          style={{ alignSelf: "flex-start" }}
+          className="bg-white/80 flex-row  space-x-1  shadow-sm rounded-full p-2"
+        >
+          <Text className="text-black text-sm">Offers:</Text>
+          <Text className="text-sky-600 text-sm">{props.offersCount}</Text>
+          <ChevronRightIcon
+            height={20}
+            width={20}
+            color={"black"}
+          ></ChevronRightIcon>
+        </TouchableOpacity>
       </ImageBackground>
-    </TouchableOpacity>
+    </View>
   );
 };
 
