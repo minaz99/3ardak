@@ -5,6 +5,7 @@ import CategoriesRequestsSlice from "./API calls/Requests/CategoriesRequestsSlic
 import MyRequestsSlice from "./API calls/Requests/MyRequestsSlice";
 import MakeOfferSlice from "./API calls/Offers/MakeOfferSlice";
 import MyOffersSlice from "./API calls/Offers/MyOffersSlice";
+import OffersPerRequestSlice from "./API calls/Offers/OffersPerRequestSlice";
 export default configureStore({
   reducer: {
     registerUserSlice: RegisterUserSlice,
@@ -13,5 +14,6 @@ export default configureStore({
     myRequests: MyRequestsSlice,
     makeOffer: MakeOfferSlice,
     myOffers: MyOffersSlice,
+    offersPerRequest: OffersPerRequestSlice,
   },
 });
