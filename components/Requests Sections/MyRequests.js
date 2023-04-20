@@ -19,7 +19,8 @@ const Myrequests = (props) => {
             category={req.category}
             status={req.status}
             request={req.title}
-            offersCount = {req.offersCount}
+            offersCount={req.offersCount}
+            offersPerRequestPressed={props.offersPerRequestPressed}
           />
         );
       })}
