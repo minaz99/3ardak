@@ -7,9 +7,19 @@ import Myrequests from "../components/Requests Sections/Myrequests";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getMyRequests } from "../API calls/Requests/MyRequestsSlice";
+import { useState } from "react";
+import OffersPerRequest from "../components/Offers Sections/OffersPerRequest";
 
 const MyRequests = () => {
   const navigation = useNavigation();
+  const [showOffers, setShowOffers] = useState(false);
+  const [reqID, setReqID] = useState(-1);
+
+  const offersPerRequestPressed = (id) => {
+    setReqID(id);
+    setShowOffers(true);
+  };
+
   useLayoutEffect(() => {
     navigation.setOptions({ headerShown: false });
   }, []);
@@ -25,7 +35,26 @@ const MyRequests = () => {
 
   return (
     <SafeAreaView className="h-full bg-white">
-      <Myrequests requests={requests} requestsCount={requestsCount} />
+      <View className="z-10 flex-grow  items-center">
+        <Myrequests
+          requests={requests}
+          offersPerRequestPressed={offersPerRequestPressed}
+          requestsCount={requestsCount}
+        />
+
+        {showOffers ? (
+          <View className="z-10 p-2 h-full absolute">
+            <OffersPerRequest
+              id={id}
+              token={token}
+              reqID={reqID}
+              setShowOffers={setShowOffers}
+            />
+          </View>
+        ) : (
+          <View></View>
+        )}
+      </View>
       <View className="p-2">
         <Footer isActive="myRequests" />
       </View>
