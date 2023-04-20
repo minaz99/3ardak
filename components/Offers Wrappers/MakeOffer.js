@@ -72,7 +72,8 @@ const MakeOffer = (props) => {
                 token,
                 id,
                 reqID: props.reqObject.id,
-                description: description + ", " + offerPrice + " KD",
+                description: description,
+                offerPrice: offerPrice,
               })
             )
           }
