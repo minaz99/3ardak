@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { ChevronDownIcon } from "react-native-heroicons/solid";
+import { ChevronDownIcon, PlusCircleIcon } from "react-native-heroicons/solid";
 import SubCategories from "./SubCategories";
 const Category = (props) => {
   const [expaneded, setExpanded] = useState(false);
@@ -18,6 +18,13 @@ const Category = (props) => {
     navigation.navigate("Requests", props.categoriesRequests);
   };
 
+  const clickedMakeNewRequest = () => {
+    props.setMakeRequest(true);
+    props.setRequestType(props.categoryName);
+  };
+
+  /* onPress={() => setExpanded(!expaneded)}
+  className=""*/
   return (
     <View className="p-4 border-b bg-white  border-gray-300 flex-col">
       <View className="flex-row items-center ">
@@ -25,11 +32,8 @@ const Category = (props) => {
           <TouchableOpacity onPress={clickedCategory} className="">
             <Text className="text-sky-600">{props.categoryName}</Text>
           </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => setExpanded(!expaneded)}
-            className=""
-          >
-            <ChevronDownIcon height="16" color={"#475569"} />
+          <TouchableOpacity onPress={() => clickedMakeNewRequest()}>
+            <PlusCircleIcon height="20" color={"#475569"} />
           </TouchableOpacity>
         </View>
         <View className="rounded-full h-7 w-7 justify-center  bg-sky-600 ">
