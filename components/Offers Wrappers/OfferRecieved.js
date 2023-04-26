@@ -14,8 +14,12 @@ import {
   UserCircleIcon,
   XCircleIcon,
 } from "react-native-heroicons/solid";
+import { useDispatch } from "react-redux";
+import { acceptOffer } from "../../API calls/Offers/AcceptOfferSlice";
+import { rejectOffer } from "../../API calls/Offers/RejectOfferSlice";
 
 const OfferRecieved = (props) => {
+  const dispatch = useDispatch();
   return (
     <View key={props.id} className="my-2 ">
       <ImageBackground
@@ -43,10 +47,29 @@ const OfferRecieved = (props) => {
           </Text>
         </View>
         <View className="flex-row space-x-2 items-center mx-auto">
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              dispatch(
+                acceptOffer({
+                  token: props.token,
+                  id: props.userID,
+                  reqID: props.reqID,
+                  offerID: props.id,
+                })
+              )
+            }
+          >
             <CheckCircleIcon width={30} height={30} color={"white"} />
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              rejectOffer({
+                token: token,
+                reqID: props.reqID,
+                offerID: props.id,
+              })
+            }
+          >
             <XCircleIcon width={30} height={30} color={"white"} />
           </TouchableOpacity>
         </View>
