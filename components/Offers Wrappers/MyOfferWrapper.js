@@ -10,19 +10,19 @@ import {
 
 const MyOfferWrapper = (props) => {
   const StatusIcon =
-    props.status === "FINISHED"
+    props.status === "ACCEPTED"
       ? CheckCircleIcon
       : props.status === "PENDING"
       ? ClockIcon
       : XCircleIcon;
   const color =
-    props.status === "FINISHED"
+    props.status === "ACCEPTED"
       ? "#16a34a"
       : props.status === "PENDING"
       ? "#9ca3af"
       : "#dc2626";
   return (
-    <View key={props.id}>
+    <View key={props.id} className="my-2">
       <ImageBackground
         source={require("../../src/4.jpg")}
         resizeMode="cover"

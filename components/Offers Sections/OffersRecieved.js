@@ -17,6 +17,9 @@ const OffersRecieved = (props) => {
             id={offer.id}
             offerPrice={offer.offerPrice}
             offereeName={offer.offereeName}
+            token={props.token}
+            reqID={props.reqID}
+            userID={props.id}
           />
         );
       })}

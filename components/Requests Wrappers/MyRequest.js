@@ -50,7 +50,7 @@ const MyRequest = (props) => {
         </View>
 
         <TouchableOpacity
-          onPress={() => props.offersPerRequestPressed(props.id)}
+          onPress={() => props.offersPerRequestPressed(props.id, props.status)}
           style={{ alignSelf: "flex-start" }}
           className="bg-white/80 flex-row  space-x-1  shadow-sm rounded-full p-2"
         >

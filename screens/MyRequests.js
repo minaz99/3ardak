@@ -14,10 +14,12 @@ const MyRequests = () => {
   const navigation = useNavigation();
   const [showOffers, setShowOffers] = useState(false);
   const [reqID, setReqID] = useState(-1);
+  //const [reqStatus,setReqStatus] = useState("");
 
-  const offersPerRequestPressed = (id) => {
+  const offersPerRequestPressed = (id, status) => {
     setReqID(id);
-    setShowOffers(true);
+    if (status === "PENDING") setShowOffers(true);
+    //setReqStatus(status);
   };
 
   useLayoutEffect(() => {
@@ -35,7 +37,7 @@ const MyRequests = () => {
 
   return (
     <SafeAreaView className="h-full bg-white">
-      <View className="z-10 flex-grow  items-center">
+      <View className="z-10 flex-grow ">
         <Myrequests
           requests={requests}
           offersPerRequestPressed={offersPerRequestPressed}
@@ -43,7 +45,7 @@ const MyRequests = () => {
         />
 
         {showOffers ? (
-          <View className="z-10 p-2 h-full absolute">
+          <View className="z-10 p-2 absolute left-0 right-0 h-full  ">
             <OffersPerRequest
               id={id}
               token={token}

@@ -17,7 +17,7 @@ const OffersSent = (props) => {
           <MyOfferWrapper
             description={offer.description}
             status={offer.status}
-            id = {offer.id}
+            id={offer.id}
           />
         );
       })}

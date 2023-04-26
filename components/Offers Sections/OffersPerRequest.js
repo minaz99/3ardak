@@ -32,7 +32,12 @@ const OffersPerRequest = (props) => {
         </TouchableOpacity>
       </View>
       <View className="-mt-4">
-        <OffersRecieved offers={offers} />
+        <OffersRecieved
+          token={props.token}
+          id={props.id}
+          reqID={props.reqID}
+          offers={offers}
+        />
       </View>
     </View>
   );
