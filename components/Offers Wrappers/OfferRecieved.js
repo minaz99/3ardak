@@ -63,11 +63,13 @@ const OfferRecieved = (props) => {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() =>
-              rejectOffer({
-                token: token,
-                reqID: props.reqID,
-                offerID: props.id,
-              })
+              dispatch(
+                rejectOffer({
+                  token: props.token,
+                  reqID: props.reqID,
+                  offerID: props.id,
+                })
+              )
             }
           >
             <XCircleIcon width={30} height={30} color={"white"} />
